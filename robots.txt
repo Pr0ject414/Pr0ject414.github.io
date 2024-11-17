@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pr0ject414.github.io/sitemap.xml
