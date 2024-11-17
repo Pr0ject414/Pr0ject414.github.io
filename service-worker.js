@@ -8,8 +8,9 @@ const ASSETS_TO_CACHE = [
   '/images/favicon-16x16.png',
   '/images/favicon-32x32.png',
   '/images/apple-touch-icon.png',
-  '/images/icon-192x192.png',
-  '/images/icon-512x512.png',
+  '/images/android-chrome-192x192.png',
+  '/images/android-chrome-512x512.png',
+  '/images/favicon.ico',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
