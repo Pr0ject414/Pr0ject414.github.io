@@ -8,6 +8,9 @@
     <meta name="author" content="Kyle Beesley">
     <meta name="theme-color" content="#007bff">
     
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://use.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://use.fontawesome.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data:;">
+
     <!-- PWA support -->
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -19,8 +22,11 @@
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-PLACEHOLDER" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
@@ -32,7 +38,20 @@
     <div class="container">
         <header>
             <nav aria-label="Main navigation">
-                <a href="#home" class="logo">Kyle Beesley</a>
+                <div class="logo-section">
+                    <a href="#home" class="logo">Kyle Beesley</a>
+                    <div class="social-links">
+                        <a href="https://github.com/Pr0ject414" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kyle-beesley/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/KyleBeesley" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -57,20 +76,6 @@
                             <span class="separator">•</span>
                             <span class="subtitle-item" data-text="Tech Enthusiast">Tech Enthusiast</span>
                         </p>
-                    </div>
-                    <div class="social-links" aria-label="Social media links">
-                        <a href="https://www.linkedin.com/in/kyle-beesley/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/Pr0ject414" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                            <span class="sr-only">GitHub</span>
-                        </a>
-                        <a href="https://x.com/KDBeesley" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
-                            <i class="fab fa-twitter" aria-hidden="true"></i>
-                            <span class="sr-only">Twitter</span>
-                        </a>
                     </div>
                     <div class="scroll-indicator" role="complementary" aria-label="Scroll indicator">
                         <span>Scroll to explore</span>
@@ -125,7 +130,7 @@
                     </div>
                     
                     <div class="skills" role="list">
-                        <h3>Areas of Expertise</h3>
+                        <h2>Areas of Expertise</h2>
                         <ul>
                             <li>TEFL Certification</li>
                             <li>English Teaching</li>
@@ -186,6 +191,11 @@
         </footer>
     </div>
 
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    
     <!-- Scripts -->
     <script src="script.js" defer></script>
 </body>

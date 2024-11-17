@@ -93,6 +93,47 @@ const initHeroAnimation = () => {
     }
 };
 
+// Theme functionality
+const initTheme = () => {
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (!themeToggle) return;
+
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    // Set initial theme
+    document.documentElement.setAttribute('data-theme', initialTheme);
+    updateThemeIcon(themeIcon, initialTheme);
+    
+    // Handle theme toggle click
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(themeIcon, newTheme);
+    });
+
+    // Handle system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            updateThemeIcon(themeIcon, newTheme);
+        }
+    });
+};
+
+const updateThemeIcon = (icon, theme) => {
+    if (!icon) return;
+    icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+};
+
 // Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -106,20 +147,15 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Initialize everything when DOM is loaded
+// Initialize all functionality
 document.addEventListener('DOMContentLoaded', () => {
     try {
         initMobileMenu();
         initSmoothScroll();
-        const cleanup = initIntersectionObserver();
+        initIntersectionObserver();
         initHeroAnimation();
-
-        // Cleanup on page unload
-        window.addEventListener('unload', () => {
-            if (cleanup) cleanup();
-        });
-
+        initTheme();
     } catch (error) {
-        console.error('Error initializing website functionality:', error);
+        console.error('Error initializing functionality:', error);
     }
 });
